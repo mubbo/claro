@@ -1,0 +1,15 @@
+/.vscode/
+/config/*
+/node_modules/
+/logs/
+/docs/
+/backup/
+/web-inf/
+/bootstrap/*
+/assets/*
+*test*
+.ds_store
+!/assets/css/
+!/assets/fonts/
+!/assets/js/
+!/assets/images/

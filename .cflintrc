@@ -1,0 +1,39 @@
+{
+	"excludes": [
+    ],
+	"includes": [
+		{
+			"code": "ARG_VAR_CONFLICT"
+		},
+		{
+			"code": "AVOID_USING_ARRAYNEW"
+		},
+		{
+			"code": "AVOID_USING_STRUCTNEW"
+		},
+		{
+			"code": "FILE_SHOULD_START_WITH_LOWERCASE"
+		},
+		{
+			"code": "MISSING_VAR"
+		},
+		{
+			"code": "MISSING_SEMI"
+		},
+		{
+			"code": "NESTED_CFOUTPUT"
+		},
+		{
+			"code": "OUTPUT_ATTR"
+		},
+		{
+			"code": "SQL_SELECT_STAR"
+		},
+		{
+			"code": "UNUSED_LOCAL_VARIABLE"
+		}
+	],
+	"inheritParent": false,
+	"output": [],
+	"rule": []
+}

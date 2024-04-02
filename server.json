@@ -1,0 +1,24 @@
+{
+    "app":{
+        "cfengine":"lucee@5.3.7.48"
+    },
+    "jvm":{
+        "javaVersion":"openjdk11"
+    },
+    "openBrowserURL":"https://osx.ngrok.io/",
+    "web":{
+        "host":"localhost",
+        "HTTP":{
+            "enable":true,
+            "port":"8080"
+        },
+        "rewrites":{
+            "enable":true
+        },
+        "SSL":{
+            "enable":false,
+            "port":"8080"
+        },
+        "welcomeFiles":"index.cfm,index.html"
+    }
+}

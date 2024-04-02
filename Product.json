@@ -1,0 +1,77 @@
+{
+    "sap_id": 2007026,
+    "title": "Amaretti BIO 150g",
+    "description": "Das knusprige Bio-Feingebäck aus Mandeln darf zu keinem Espresso fehlen. Die kleinen italienischen Makronen sind zudem lange haltbar.",
+    "product_type": "SCHOKOLADE & BACKWAREN",
+    "category": "Guetzli, Gebäck",
+    "vendor": "claro", 
+    "color": "",
+    "size":"",
+    "ean":"",
+    "sku": "2007026",
+    "price": "",
+    "sale_price": "",
+    "parent_id":"",
+    "parent_name":"",
+    "inventory_quantity":30,
+    "images": [
+        {
+            "code": "2007026"
+        }
+        
+    ],
+    "metafields": [
+        {
+            "key":"Brand",
+            "value":"Terra Verde"
+        },
+        {
+            "key": "bio?code",
+            "value": "IT-BIO-006"
+        },
+        {
+            "key":"Protien",
+            "value":"8.85"
+        },
+        {
+            "key": "Kcal",
+            "value": "467"
+        },
+        {
+            "key":"kj",
+            "value":"1953"
+        },
+        {
+            "key":"Saturated_fats",
+            "value":"5.42"
+        },
+        {
+            "key":"Carbohydrates",
+            "value":"68.2"
+        },
+        {
+            "key":"Best_before_months",
+            "value":"13"
+        },
+        {
+            "key":"Manufactured_in",
+            "value":"Italien"
+        },
+        {
+            "key":"Salt",
+            "value":"0.075"
+        },
+        {
+            "key":"Sugar",
+            "value":"63.3"
+        },
+        {
+            "key":"Vegetarian",
+            "value":"x"
+        },
+        {
+            "key":"Ingredients",
+            "value":"Rohrzucker*, Mandeln* (30%), Eiweiss* (*) aus biologischer Landwirtschaft"
+        }
+    ]
+}
