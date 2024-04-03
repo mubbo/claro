@@ -1,6 +1,22 @@
 ﻿
 <!--- <cfif structKeyExists(request,"security") AND request.security.getMode() EQ "DEV"> --->
-<cfoutput>
+  <cfoutput>
+  <cfif listfirst(CGI.CONTENT_TYPE,";") eq "application/json">
+  {
+    "Exception":{
+      "action":<cfif structKeyExists( request, 'failedAction' )>
+        <!--- sanitize user supplied value before displaying it --->
+        "#replace( request.failedAction, "<", "&lt;", "all" )#"
+      <cfelse>
+        "unknown"
+      </cfif>,
+      "message": "#request.exception.message#",
+      "detail": "#request.exception.detail#",
+      "stack": #serializeJson(request.exception.cause.tagcontext)#
+    }
+  }
+ <cfelse>
+
   <div class="page-500 mode-dev">
     <div class="outer">
       <h4>An Error Occurred</h4>
@@ -23,6 +39,7 @@
         </ul>
     </div>
 </div>
+</cfif>
 </cfoutput>
 <!--- <cfelse>
   <cfmail from="ospa@ecommercify.ch" to="helpdesk@ecommercify.ch" subject="OSPA - ERROR #request.exception.type#/#request.exception.message#" type="html">

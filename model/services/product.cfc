@@ -21,10 +21,10 @@
         <cfquery name="qProduct" datasource="#application.datasource#">
             select id from products where id = <cfqueryparam cfsqltype="numeric" value="#arguments.id#">
         </cfquery>
-
         <cfif qProduct.recordcount>
             <cfreturn {"ok":true,"product":{"id": qProduct.id}}>
         </cfif>
+       
         <cfreturn {"ok":false,"product":{}}>
 
     </cffunction>
@@ -116,6 +116,18 @@
         <cfreturn stResult>
     </cffunction>
 
+
+    <cffunction name="validateProduct" access="public" returntype="boolean" output="false">
+        <cfargument name="product" type="struct" required="true">
+
+        <cfset var requiredFields = ["title","price","parent_id","parent_name","description","product_type","category","vendor","sap_id","size"]>
+        <cfset var fields = structKeyArray(arguments.product)>
+
+        <cfset requiredfields.removeAll(fields)>
+
+        <cfreturn arraylen(requiredFields) eq 0>
+        
+    </cffunction>
     
 <!--- private functions --->
     <cffunction name="upsertProduct" access="private" returntype="struct" output="false">
@@ -221,10 +233,10 @@
         
         <cfset var price = "">
         <cfset var stMeta = {}>
-        <cfset var compare_at_price = "">
+        <cfset var compare_at_price = 0>
         <cfset var productTitle = arguments.product.title>
 
-        <cfif len(arguments.product.sale_price)>
+        <cfif structkeyExists(arguments.product,"sale_price") AND len(arguments.product.sale_price)>
             <cfset price = arguments.product.sale_price>
             <cfset compare_at_price = arguments.product.price>
         <cfelse>
@@ -261,15 +273,17 @@
             <!--- images --->
 
             <!--- metafields --->
-            <cfloop array="#arguments.product.metafields#" item="stMeta">
-                <cfset arrayAppend(stTempProd.product.metafields,
-                    {
-                        "key": "#stMeta.key#",
-                        "namespace":"properties",
-                        "type": "single_line_text_field",
-                        "value": stMeta.value}
-                    )> 
-            </cfloop>
+            <cfif structKeyExists(arguments.product,"metafields")>
+                <cfloop array="#arguments.product.metafields#" item="stMeta">
+                    <cfset arrayAppend(stTempProd.product.metafields,
+                        {
+                            "key": "#stMeta.key#",
+                            "namespace":"properties",
+                            "type": "single_line_text_field",
+                            "value": stMeta.value}
+                        )> 
+                </cfloop>
+            </cfif>
 
         <cfelse>
             <!--- is a child product --->

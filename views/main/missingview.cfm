@@ -1,4 +1,7 @@
-
+<cfif listfirst(CGI.CONTENT_TYPE,";") eq "application/json">
+  <cfheader statuscode="404" statustext="Not Found">
+  {}
+<cfelse>
  <div class="row missingview">
     <div class="col-md-6 align-self-center">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -350,3 +353,4 @@ gsap.to("#glassShine", {
   delay: 2
 });
 </script>
+</cfif>

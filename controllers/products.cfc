@@ -50,7 +50,7 @@
 
         <cfset var stResult = {}>
 
-        <cfif structKeyExists(arguments.rc,"product")>
+        <cfif structKeyExists(arguments.rc,"product") and variables.productService.validateProduct(arguments.rc.product)>
 
             <cfset stResult = variables.productservice.new(product = arguments.rc.product)>
             
@@ -68,7 +68,7 @@
     <cffunction name="update" output="false">
         <cfargument name="rc" type="struct" required="true">
 
-        <cfif structKeyExists(arguments.rc,"product") and structKeyExists(arguments.rc,"id")>
+        <cfif structKeyExists(arguments.rc,"product") and variables.productService.validateProduct(arguments.rc.product) and structKeyExists(arguments.rc,"id") >
 
             <cfset var stResult = variables.productservice.update(id = arguments.rc.id, product = arguments.rc.product)>
             
@@ -80,7 +80,7 @@
                 <cfif structkeyExists(stResult,"error_code")>
                     <cfset error_code = stResult.error_code>
                 </cfif>
-                <cfset variables.fw.renderData().data(stResult.result).type("json").statusCode(error_code)>
+                <cfset variables.fw.renderData().data(stResult).type("json").statusCode(error_code)>
             </cfif>
         <cfelse>
             <cfset variables.fw.renderData().data({"error":"required parameter missing or invalid"}).type("json").statusCode(406)>
